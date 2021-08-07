@@ -17,7 +17,9 @@ public class LauncherScript : MonoBehaviour
         timer -= Time.deltaTime;
         if(timer <= 0.0f)
         {
-            Instantiate(ballPrefab, transform.position, transform.rotation);
+            Quaternion rotation = Quaternion.Lerp(transform.rotation, Quaternion.AngleAxis(180, transform.forward), Random.value);
+            Debug.Log(rotation.ToString());
+            Instantiate(ballPrefab, transform.position, rotation);
             timer = 2.0f;
         }
     }

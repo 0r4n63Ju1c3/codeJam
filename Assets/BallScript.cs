@@ -12,7 +12,7 @@ public class BallScript : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         //Ball velocity should be determined by launcher
-        rb.velocity = new Vector2(speed, 0.0f);
+        rb.velocity = new Vector2(transform.right.x, transform.right.y);
     }
 
     // Update is called once per frame
