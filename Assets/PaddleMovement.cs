@@ -4,9 +4,6 @@ using UnityEngine.InputSystem.LowLevel;
 
 public class PaddleMovement : MonoBehaviour
 {
-
-    /*private Vector3 mousePosition;*/
-    private Vector2 lastPosition;
     private Rigidbody2D rb;
     public float moveSpeed = 0.1f;
 
@@ -15,7 +12,6 @@ public class PaddleMovement : MonoBehaviour
     void Start()
     {
         /*Cursor.lockState = CursorLockMode.Confined;*/
-        lastPosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         rb = GetComponent<Rigidbody2D>();
 
     }
@@ -23,8 +19,10 @@ public class PaddleMovement : MonoBehaviour
     void FixedUpdate()
     {
         var mouse = Mouse.current;
+
         if (mouse.rightButton.isPressed)
         {
+            Cursor.visible = false;
             Vector2 screenCenter = new Vector2(Screen.width / 2.0f, Screen.height / 2.0f);
 
             /*mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);*/
@@ -45,6 +43,7 @@ public class PaddleMovement : MonoBehaviour
         }
         else
         {
+            Cursor.visible = true;
             rb.velocity = Vector2.zero;
         }
     }
