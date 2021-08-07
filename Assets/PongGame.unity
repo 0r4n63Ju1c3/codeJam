@@ -232,7 +232,7 @@ GameObject:
   - component: {fileID: 470018110}
   m_Layer: 0
   m_Name: WallRight
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -317,7 +317,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 470018106}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.8, y: 0.0107, z: 0}
+  m_LocalPosition: {x: 10.75, y: 0.0107, z: 0}
   m_LocalScale: {x: 0.80527717, y: 10.022596, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -464,7 +464,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.0001
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -591,7 +591,7 @@ GameObject:
   - component: {fileID: 676947602}
   m_Layer: 0
   m_Name: WallLeft
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -676,7 +676,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 676947598}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.71, y: 0.04, z: 0}
+  m_LocalPosition: {x: -10.84, y: -0.04, z: 0}
   m_LocalScale: {x: 0.67904305, y: 10.022596, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -720,8 +720,9 @@ GameObject:
   - component: {fileID: 1068196607}
   - component: {fileID: 1068196606}
   - component: {fileID: 1068196605}
+  - component: {fileID: 1068196609}
   m_Layer: 0
-  m_Name: WallBottom
+  m_Name: Paddle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -761,19 +762,19 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1068196604}
-  m_BodyType: 2
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 6
 --- !u!212 &1068196607
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -833,12 +834,25 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1068196604}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.21, y: -4.74, z: 0}
-  m_LocalScale: {x: 19.702435, y: 0.55329543, z: 1}
+  m_LocalPosition: {x: 0.02, y: -4.73, z: 0}
+  m_LocalScale: {x: 3.509781, y: 0.55329543, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1068196609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1068196604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 120849da6ba1e0343b1f449038b3cdfc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 0.1
 --- !u!1 &1718761890
 GameObject:
   m_ObjectHideFlags: 0
@@ -853,7 +867,7 @@ GameObject:
   - component: {fileID: 1718761891}
   m_Layer: 0
   m_Name: WallTop
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -964,8 +978,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1718761890}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.01, y: 4.8506, z: 0}
-  m_LocalScale: {x: 19.702435, y: 0.55329543, z: 1}
+  m_LocalPosition: {x: 0.0282, y: 4.8506, z: 0}
+  m_LocalScale: {x: 22.94254, y: 0.55329543, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
