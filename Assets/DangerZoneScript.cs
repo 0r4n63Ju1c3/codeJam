@@ -2,8 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+[RequireComponent(typeof(IntVariable))]
 public class DangerZoneScript : MonoBehaviour
 {
+
+    public IntVariable lives;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +22,7 @@ public class DangerZoneScript : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         Destroy(other.gameObject);
+        lives.value--;
         Debug.Log("Triggered collision");
     }
 }
