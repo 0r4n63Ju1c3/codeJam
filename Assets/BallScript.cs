@@ -20,4 +20,12 @@ public class BallScript : MonoBehaviour
     {
         rb.velocity = speed*rb.velocity.normalized;
     }
+
+    /*private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Ball")
+        {
+            Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());        
+        }
+    }*/
 }
