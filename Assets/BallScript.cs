@@ -5,7 +5,7 @@ using UnityEngine;
 public class BallScript : MonoBehaviour
 {
     protected Rigidbody2D rb;
-    public float speed = 0.0f;
+    public float speed = 2f;
 
     // Start is called before the first frame update
     void Start()
