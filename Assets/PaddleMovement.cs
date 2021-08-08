@@ -19,9 +19,11 @@ public class PaddleMovement : MonoBehaviour
     void FixedUpdate()
     {
         var mouse = Mouse.current;
+        var kb = Keyboard.current;
+
 
         //
-        if (mouse.rightButton.isPressed)
+        if (kb.spaceKey.isPressed)
         {
             Cursor.visible = false;
 
