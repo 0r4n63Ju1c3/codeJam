@@ -20,26 +20,33 @@ public class PaddleMovement : MonoBehaviour
     {
         var mouse = Mouse.current;
 
+        //
         if (mouse.rightButton.isPressed)
         {
             Cursor.visible = false;
-            Vector2 screenCenter = new Vector2(Screen.width / 2.0f, Screen.height / 2.0f);
 
-            /*mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);*/
-
-            Vector2 mousePosition = mouse.position.ReadValue();
-            mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
-
+            Vector3 screenCenter = new Vector3(Screen.width / 2.0f, Screen.height / 2.0f, 0.0f);
             Vector2 centerPosition = Camera.main.ScreenToWorldPoint(screenCenter);
 
-            Vector2 deltaPosition = mousePosition - centerPosition;
+            Vector2 deltaScreenPosition = mouse.position.ReadValue();
+            Vector3 deltaCamera = Camera.main.ScreenToWorldPoint(new Vector3(deltaScreenPosition.x, deltaScreenPosition.y, 0.0f));
+            Vector2 deltaPosition = new Vector2(deltaCamera.x, deltaCamera.y);
+            
 
+            rb.velocity = (deltaPosition - centerPosition) / Time.deltaTime;
+
+            mouse.WarpCursorPosition(new Vector2(screenCenter.x, screenCenter.y));
+            InputState.Change(mouse.position, new Vector2(screenCenter.x, screenCenter.y));
+
+            /*
+            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(mouse.position.ReadValue());
+            Vector3 centerPosition = Camera.main.ScreenToWorldPoint(screenCenter);
+            Vector2 returnPosition = new Vector2(centerPosition.x, centerPosition.y);
+            Vector2 deltaPosition = mousePosition - returnPosition;
             Vector2 mouseVelocity = deltaPosition / Time.deltaTime;
-
             rb.velocity = mouseVelocity;
             
-            mouse.WarpCursorPosition(screenCenter);
-            //InputState.Change(mouse.position, screenCenter);
+            */
         }
         else
         {
@@ -48,11 +55,7 @@ public class PaddleMovement : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
     void OnCollisionEnter2D(Collision2D paddle)
     {
         if (paddle.gameObject.tag == "Wall")

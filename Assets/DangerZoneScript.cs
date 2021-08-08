@@ -4,10 +4,14 @@ using UnityEngine;
 
 
 [RequireComponent(typeof(IntVariable))]
+[RequireComponent(typeof(ListVariable))]
 public class DangerZoneScript : MonoBehaviour
 {
 
     public IntVariable lives;
+    public IntVariable ballCount;
+    public ListVariable ballList;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,8 +25,13 @@ public class DangerZoneScript : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D other)
     {
-        Destroy(other.gameObject);
-        lives.value--;
-        Debug.Log("Triggered collision");
+        if (other.gameObject.tag == "Ball")
+        {
+            ballList.list.Remove(other.gameObject);
+            Destroy(other.gameObject);
+            lives.value--;
+            ballCount.value--;
+        }
+            
     }
 }
