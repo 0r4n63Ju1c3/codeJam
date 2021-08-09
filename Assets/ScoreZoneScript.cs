@@ -5,7 +5,7 @@ using UnityEngine;
 public class ScoreZoneScript : MonoBehaviour
 {
     // Start is called before the first frame update
-    public int score = 0;
+    public IntVariable playerScore;
     public IntVariable ballCount;
     public ListVariable ballList;
     void Start()
@@ -24,7 +24,7 @@ public class ScoreZoneScript : MonoBehaviour
         {
             ballList.list.Remove(other.gameObject);
             Destroy(other.gameObject);
-            score++;
+            playerScore.value += ballCount.value * 100 / 2;
             ballCount.value--;
         }
 
