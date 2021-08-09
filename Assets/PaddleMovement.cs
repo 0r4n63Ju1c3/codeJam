@@ -50,7 +50,6 @@ public class PaddleMovement : MonoBehaviour
     {
         if (paddle.gameObject.tag == "Wall")
         {
-            Debug.Log("Kill Me");
             rb.velocity = Vector2.zero;
             /*transform.position = lastPosition;*/
         }

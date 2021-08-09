@@ -22,11 +22,13 @@ public class GameManager : MonoBehaviour
     {
         if (UI.GetComponentInChildren<Canvas>().enabled)
         {
+            Cursor.visible = false;
             UI.GetComponentInChildren<Canvas>().enabled = false;
             Time.timeScale = 1.0f;
         }
         else
         {
+            Cursor.visible = true;
             UI.GetComponentInChildren<Canvas>().enabled = true;
             Time.timeScale = 0f;
         }
