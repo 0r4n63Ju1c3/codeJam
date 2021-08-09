@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 [RequireComponent(typeof(IntVariable))]
@@ -31,6 +32,12 @@ public class DangerZoneScript : MonoBehaviour
             Destroy(other.gameObject);
             lives.value--;
             ballCount.value--;
+        }
+
+        if(lives.value <= 0)
+        {
+            Cursor.visible = true;
+            SceneManager.LoadScene(2);
         }
             
     }
