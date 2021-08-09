@@ -17,11 +17,11 @@ public class MainMenu : MonoBehaviour
     {
         
     }
-    void StartGame() {
+    public void StartGame() {
         SceneManager.LoadScene(1);
     }
 
-    void QuitGame() {
+    public void QuitGame() {
         Application.Quit();
     }
 
