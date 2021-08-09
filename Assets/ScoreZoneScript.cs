@@ -1,22 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-
-[RequireComponent(typeof(IntVariable))]
-[RequireComponent(typeof(ListVariable))]
-public class DangerZoneScript : MonoBehaviour
+public class ScoreZoneScript : MonoBehaviour
 {
-
-    public IntVariable lives;
+    // Start is called before the first frame update
+    public IntVariable playerScore;
     public IntVariable ballCount;
     public ListVariable ballList;
-
-    // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("Dangerzone is awake");
+        
     }
 
     // Update is called once per frame
@@ -30,15 +24,9 @@ public class DangerZoneScript : MonoBehaviour
         {
             ballList.list.Remove(other.gameObject);
             Destroy(other.gameObject);
-            lives.value--;
+            playerScore.value += ballCount.value * 100 / 2;
             ballCount.value--;
         }
 
-        if(lives.value <= 0)
-        {
-            Cursor.visible = true;
-            SceneManager.LoadScene(2);
-        }
-            
     }
 }

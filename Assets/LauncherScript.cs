@@ -11,6 +11,8 @@ public class LauncherScript : MonoBehaviour
 
     public IntVariable ballCount;
 
+    public IntVariable playerScore;
+
     public ListVariable ballList;
 
     [SerializeField]
@@ -21,6 +23,7 @@ public class LauncherScript : MonoBehaviour
     void Start()
     {
         currentBallCount = ballCount.value;
+        
     }
 
     private void FixedUpdate()
@@ -36,22 +39,24 @@ public class LauncherScript : MonoBehaviour
         {
             ballCount.value++;
             currentBallCount++;
-            Quaternion rotation = Quaternion.Lerp(transform.rotation, Quaternion.AngleAxis(180, transform.forward), Random.value);
+            Quaternion rotation = Quaternion.Lerp(transform.rotation, Quaternion.AngleAxis(180, transform.forward), Random.Range(0.2f, 0.8f));
             GameObject ball = Instantiate(ballPrefab, transform.position, rotation);
-            foreach(GameObject b in ballList.list)
+            if((playerScore.value / 5000.0f) + 1 < 2.0f)
             {
-                Physics2D.IgnoreCollision(b.GetComponent<Collider2D>(), ball.GetComponent<Collider2D>());
-            }
-            ballList.list.Add(ball);
-
-            if(ballCount.value == 0)
-            {
-                timer = 2.5f;
+                ball.GetComponent<BallScript>().speed *= (playerScore.value / 5000.0f) + 1;
             }
             else
             {
-                timer = 2.5f * ballCount.value;
+                ball.GetComponent<BallScript>().speed *= 2.4f;
             }
+            
+            /*foreach(GameObject b in ballList.list)
+            {
+                Physics2D.IgnoreCollision(b.GetComponent<Collider2D>(), ball.GetComponent<Collider2D>());
+            }*/
+            ballList.list.Add(ball);
+
+            timer = 5.0f;
         }
     }
 }
