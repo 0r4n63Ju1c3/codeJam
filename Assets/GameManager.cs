@@ -33,4 +33,13 @@ public class GameManager : MonoBehaviour
         
         Debug.Log("GAMEMANAGER:: TimeScale: " + Time.timeScale);
     }
+
+    public void QuitGame()
+    {
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+        #else
+            Application.Quit();
+        #endif
+    }
 }

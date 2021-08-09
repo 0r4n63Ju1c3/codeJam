@@ -19,42 +19,30 @@ public class PaddleMovement : MonoBehaviour
     void FixedUpdate()
     {
         var mouse = Mouse.current;
-        var kb = Keyboard.current;
+        Cursor.visible = false;
 
+        Vector3 screenCenter = new Vector3(Screen.width / 2.0f, Screen.height / 2.0f, 0.0f);
+        Vector2 centerPosition = Camera.main.ScreenToWorldPoint(screenCenter);
 
-        //
-        if (kb.spaceKey.isPressed)
-        {
-            Cursor.visible = false;
-
-            Vector3 screenCenter = new Vector3(Screen.width / 2.0f, Screen.height / 2.0f, 0.0f);
-            Vector2 centerPosition = Camera.main.ScreenToWorldPoint(screenCenter);
-
-            Vector2 deltaScreenPosition = mouse.position.ReadValue();
-            Vector3 deltaCamera = Camera.main.ScreenToWorldPoint(new Vector3(deltaScreenPosition.x, deltaScreenPosition.y, 0.0f));
-            Vector2 deltaPosition = new Vector2(deltaCamera.x, deltaCamera.y);
+        Vector2 deltaScreenPosition = mouse.position.ReadValue();
+        Vector3 deltaCamera = Camera.main.ScreenToWorldPoint(new Vector3(deltaScreenPosition.x, deltaScreenPosition.y, 0.0f));
+        Vector2 deltaPosition = new Vector2(deltaCamera.x, deltaCamera.y);
             
 
-            rb.velocity = (deltaPosition - centerPosition) / Time.deltaTime;
+        rb.velocity = (deltaPosition - centerPosition) / Time.deltaTime;
 
-            mouse.WarpCursorPosition(new Vector2(screenCenter.x, screenCenter.y));
-            InputState.Change(mouse.position, new Vector2(screenCenter.x, screenCenter.y));
+        mouse.WarpCursorPosition(new Vector2(screenCenter.x, screenCenter.y));
+        InputState.Change(mouse.position, new Vector2(screenCenter.x, screenCenter.y));
 
-            /*
-            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(mouse.position.ReadValue());
-            Vector3 centerPosition = Camera.main.ScreenToWorldPoint(screenCenter);
-            Vector2 returnPosition = new Vector2(centerPosition.x, centerPosition.y);
-            Vector2 deltaPosition = mousePosition - returnPosition;
-            Vector2 mouseVelocity = deltaPosition / Time.deltaTime;
-            rb.velocity = mouseVelocity;
+        /*
+        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(mouse.position.ReadValue());
+        Vector3 centerPosition = Camera.main.ScreenToWorldPoint(screenCenter);
+        Vector2 returnPosition = new Vector2(centerPosition.x, centerPosition.y);
+        Vector2 deltaPosition = mousePosition - returnPosition;
+        Vector2 mouseVelocity = deltaPosition / Time.deltaTime;
+        rb.velocity = mouseVelocity;
             
-            */
-        }
-        else
-        {
-            Cursor.visible = true;
-            rb.velocity = Vector2.zero;
-        }
+        */
     }
 
 
