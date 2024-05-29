@@ -16,8 +16,19 @@ public class PaddleMovement : MonoBehaviour
 
     }
 
+    //Changed FixedUpdate to Update
     void FixedUpdate()
     {
+        /*if (Input.GetKey(KeyCode.A))
+        {
+
+        }
+
+        if (Input.GetKey(KeyCode.D))
+        {
+
+        }*/
+
         var mouse = Mouse.current;
         Cursor.visible = false;
 
@@ -29,7 +40,8 @@ public class PaddleMovement : MonoBehaviour
         Vector2 deltaPosition = new Vector2(deltaCamera.x, deltaCamera.y);
             
 
-        rb.velocity = (deltaPosition - centerPosition) / Time.deltaTime;
+
+        rb.velocity = new Vector3((deltaPosition.x - centerPosition.x), 0.0f, 0.0f) / Time.deltaTime;
 
         mouse.WarpCursorPosition(new Vector2(screenCenter.x, screenCenter.y));
         InputState.Change(mouse.position, new Vector2(screenCenter.x, screenCenter.y));
